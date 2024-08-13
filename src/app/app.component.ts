@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [CommonModule, HttpClientModule, RouterOutlet, HeaderComponent, ContactsComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'contact-assessment';
