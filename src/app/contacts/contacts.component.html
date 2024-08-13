@@ -1,0 +1,21 @@
+<div class="view-toggle">
+  <img
+    src="grid-icon.svg"
+    title="Click for Grid View"
+    alt="Grid View Icon"
+    (click)="setView('grid')"
+    class="grid-icon"
+    [class.disabled]="currentView === 'grid'"
+  />
+  <img
+    src="list-icon.svg"
+    title="Click for List View"
+    alt="List View Icon"
+    (click)="setView('list')"
+    class="list-icon"
+    [class.disabled]="currentView === 'list'"
+  />
+</div>
+
+<app-grid-view *ngIf="currentView === 'grid'"></app-grid-view>
+<app-list-view *ngIf="currentView === 'list'"></app-list-view>
