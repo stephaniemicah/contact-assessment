@@ -14,4 +14,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'contact-assessment';
+
+  isModalOpen = false;
+
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
+  
 }
