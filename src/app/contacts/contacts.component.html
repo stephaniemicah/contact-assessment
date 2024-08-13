@@ -20,4 +20,4 @@
 <app-grid-view *ngIf="currentView === 'grid'"></app-grid-view>
 <app-list-view *ngIf="currentView === 'list'"></app-list-view>
 
-<app-new-contact *ngIf="isModalOpen" (cancel)="closeModalAndReset()"></app-new-contact>
+<app-new-contact *ngIf="isModalOpen" (cancel)="closeModalAndRefresh()"   (contactAdded)="closeModalAndRefresh()"></app-new-contact>
