@@ -1,11 +1,11 @@
 <div class="modal">
   <div class="modal-content">
-    <h2>Add New Contact</h2>
+    <!-- <h2>Add New Contact</h2> -->
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <!-- Overall form validation -->
-      @if (contactForm.dirty && contactForm.touched && contactForm.invalid) {
+      <!-- @if (contactForm.dirty && contactForm.touched && contactForm.invalid) {
         <p class="control-error">Invalid form - please check your input data.</p>
-      }
+      } -->
 
       <div class="form-group">
         <label for="name">Name</label>
@@ -19,12 +19,12 @@
         <label for="phone">Contact Number</label>
         <input type="text" id="phone" formControlName="contactNumber"/>
         @if (contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched) {
-          <p class="control-error">Contact Number is required.</p>
+          <p class="control-error">Please enter a contact number.</p>
         }
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Email address</label>
         <input id="email" type="email" formControlName="email"/>
         @if (contactForm.controls.email.invalid && contactForm.controls.email.touched) {
           @if (contactForm.controls.email.errors?.['required']) {

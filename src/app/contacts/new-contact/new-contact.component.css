@@ -16,6 +16,19 @@
   border-radius: 8px;
   width: 400px;
   max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .form-group {
@@ -30,14 +43,27 @@
 
 .form-group input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  border-color: #b200ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
+}
+
+.control-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -46,6 +72,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .modal-actions button:first-child {
@@ -56,4 +83,12 @@
 .modal-actions button:last-child {
   background-color: #b200ff;
   color: #fff;
+}
+
+.modal-actions button:first-child:hover {
+  background-color: #b3b3b3;
+}
+
+.modal-actions button:last-child:hover {
+  background-color: #8a00cc;
 }
