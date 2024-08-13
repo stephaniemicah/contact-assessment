@@ -1,0 +1,11 @@
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let contact of contacts">
+    <div class="icon-container">
+      <img src="edit-icon.svg" alt="Edit" class="icon edit-icon">
+      <img src="delete-icon.svg" alt="Delete" class="icon delete-icon" >
+    </div>
+    <h4>{{ contact.name }}</h4>
+    <p>{{ contact.email }}</p>
+    <p>{{ contact.phone }}</p>
+  </div>
+</div>

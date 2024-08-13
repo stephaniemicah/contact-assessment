@@ -1,0 +1,51 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  padding: 10px 6%;
+}
+
+.grid-item {
+  position: relative;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.icon-container {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+  transform: scale(1.1);
+}
+
+p {
+  margin-top: 0;
+  padding: 0;
+}
+
+
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
