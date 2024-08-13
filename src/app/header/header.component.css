@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 6%;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 .header-text h2 {
@@ -14,9 +14,10 @@
 }
 
 .header-text p {
-  margin: 5px 0 0 10px;
+  margin: 0;
   font-size: 16px;
   color: #333;
+  max-width: 75%;
 }
 
 .header-button .add-contact-button {
