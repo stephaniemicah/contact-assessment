@@ -1,23 +1,45 @@
 <div class="modal">
-    <div class="modal-content">
-      <h2>Add New Contact</h2>
-      <form (ngSubmit)="saveContact()">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" [(ngModel)]="contact.name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Contact Number</label>
-          <input type="text" id="phone" [(ngModel)]="contact.phone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" [(ngModel)]="contact.email" name="email" required>
-        </div>
-        <div class="modal-actions">
-          <button type="button" (click)="cancelModal()">Cancel</button>
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
-    </div>
+  <div class="modal-content">
+    <h2>Add New Contact</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <!-- Overall form validation -->
+      @if (contactForm.dirty && contactForm.touched && contactForm.invalid) {
+        <p class="control-error">Invalid form - please check your input data.</p>
+      }
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name"/>
+        @if (contactForm.controls.name.invalid && contactForm.controls.name.touched) {
+          <p class="control-error">Name is required.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Contact Number</label>
+        <input type="text" id="phone" formControlName="contactNumber"/>
+        @if (contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched) {
+          <p class="control-error">Contact Number is required.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"/>
+        @if (contactForm.controls.email.invalid && contactForm.controls.email.touched) {
+          @if (contactForm.controls.email.errors?.['required']) {
+            <p class="control-error">Email is required.</p>
+          }
+          @if (contactForm.controls.email.errors?.['email']) {
+            <p class="control-error">Enter a valid email address.</p>
+          }
+        }
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" (click)="cancelModal()">Cancel</button>
+        <button type="submit">Save Changes</button>
+      </div>
+    </form>
   </div>
+</div>
