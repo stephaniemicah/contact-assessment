@@ -1,1 +1,23 @@
-<p>new-contact works!</p>
+<div class="modal">
+    <div class="modal-content">
+      <h2>Add New Contact</h2>
+      <form (ngSubmit)="saveContact()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" [(ngModel)]="contact.name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Contact Number</label>
+          <input type="text" id="phone" [(ngModel)]="contact.phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="contact.email" name="email" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" (click)="cancel()">Cancel</button>
+          <button type="submit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>

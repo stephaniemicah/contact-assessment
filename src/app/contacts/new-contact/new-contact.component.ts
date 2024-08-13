@@ -1,12 +1,33 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ContactsService } from '../contacts.service';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-new-contact',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './new-contact.component.html',
-  styleUrl: './new-contact.component.css'
+  styleUrls: ['./new-contact.component.css']
 })
 export class NewContactComponent {
+  contact: Contact = {
+    id: 0,
+    name: '',
+    email: '',
+    phone: ''
+  };
 
+  constructor(private contactsService: ContactsService) {}
+
+  saveContact(): void {
+    this.contactsService.addContact(this.contact).subscribe(() => {
+      // Handle success, e.g., close modal or refresh contact list
+    });
+  }
+
+  cancel(): void {
+    // Logic to close the modal
+  }
 }
