@@ -24,5 +24,5 @@ export class AppComponent {
   closeModal(): void {
     this.isModalOpen = false;
   }
-  
+
 }
