@@ -9,7 +9,8 @@
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" formControlName="name"/>
+        <input type="text" id="name" formControlName="name"
+        [ngClass]="{'ng-invalid': contactForm.controls.name.invalid && contactForm.controls.name.touched}"/>
         @if (contactForm.controls.name.invalid && contactForm.controls.name.touched) {
           <p class="control-error">Name is required.</p>
         }
@@ -17,7 +18,8 @@
 
       <div class="form-group">
         <label for="phone">Contact Number</label>
-        <input type="text" id="phone" formControlName="contactNumber"/>
+        <input type="text" id="phone" formControlName="contactNumber"
+        [ngClass]="{'ng-invalid': contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched}"/>
         @if (contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched) {
           <p class="control-error">Please enter a contact number.</p>
         }
@@ -25,7 +27,8 @@
 
       <div class="form-group">
         <label for="email">Email address</label>
-        <input id="email" type="email" formControlName="email"/>
+        <input id="email" type="email" formControlName="email"
+          [ngClass]="{'ng-invalid': contactForm.controls.email.invalid && contactForm.controls.email.touched}"/>
         @if (contactForm.controls.email.invalid && contactForm.controls.email.touched) {
           @if (contactForm.controls.email.errors?.['required']) {
             <p class="control-error">Email is required.</p>

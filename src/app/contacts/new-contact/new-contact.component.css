@@ -55,7 +55,13 @@
   box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
 }
 
+.form-group input.ng-invalid.ng-touched {
+  border-color: red;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
 .control-error {
+  border-color: red;
   color: red;
   font-size: 12px;
   margin-top: 5px;
