@@ -1,0 +1,53 @@
+.list-view-container {
+  padding: 0 6%;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th,
+.contact-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid gray;
+}
+
+.contact-table th {
+  /* color:#674188; */
+  background-color: #674188;
+  color: #fff;
+}
+
+.contact-table tbody tr {
+  border-bottom: 1px solid #000000;
+}
+
+.contact-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.contact-table a {
+  color: #674188;
+  text-decoration: none;
+}
+
+.contact-table a:hover {
+  text-decoration: underline;
+}
+
+.action-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.action-icon:last-child {
+  margin-right: 0;
+}
+
+.actions-column {
+  width: 1%;
+}

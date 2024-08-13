@@ -1,0 +1,25 @@
+<div class="list-view-container">
+  <table class="contact-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact Number</th>
+        <th>Email Address</th>
+        <th class="actions-column">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts" class="contact-item">
+        <td>
+          <a href="#">{{ contact.name }}</a>
+        </td>
+        <td>{{ contact.phone }}</td>
+        <td>{{ contact.email }}</td>
+        <td class="actions-column">
+          <img src="edit-icon.svg" title="Edit button" alt="Edit" class="action-icon">
+          <img src="delete-icon.svg" title="Delete button" alt="Delete" class="action-icon">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
