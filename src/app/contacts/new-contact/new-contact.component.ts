@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContactsService } from '../contacts.service';
@@ -12,6 +12,8 @@ import { Contact } from '../contact.model';
   styleUrls: ['./new-contact.component.css']
 })
 export class NewContactComponent {
+  @Output() cancel = new EventEmitter<void>();
+
   contact: Contact = {
     id: 0,
     name: '',
@@ -27,7 +29,8 @@ export class NewContactComponent {
     });
   }
 
-  cancel(): void {
+  cancelModal(): void {
     // Logic to close the modal
+    this.cancel.emit();
   }
 }
