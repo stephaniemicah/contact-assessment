@@ -38,7 +38,7 @@ export class ContactsComponent implements OnInit {
   }
 
   closeModalAndRefresh(): void {
+    this.fetchContacts();
     this.closeModal.emit();
-    this.fetchContacts(); 
   }
 }
