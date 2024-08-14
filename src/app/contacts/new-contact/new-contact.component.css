@@ -98,3 +98,14 @@
 .modal-actions button:last-child:hover {
   background-color: #8a00cc;
 }
+
+.control-error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+.modal-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

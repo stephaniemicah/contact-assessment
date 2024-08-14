@@ -1,47 +1,48 @@
 <div class="modal">
   <div class="modal-content">
-    <!-- <h2>Add New Contact</h2> -->
+    <h2>Add New Contact</h2>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-      <!-- Overall form validation -->
-      <!-- @if (contactForm.dirty && contactForm.touched && contactForm.invalid) {
-        <p class="control-error">Invalid form - please check your input data.</p>
-      } -->
-
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" formControlName="name"
-        [ngClass]="{'ng-invalid': contactForm.controls.name.invalid && contactForm.controls.name.touched}"/>
-        @if (contactForm.controls.name.invalid && contactForm.controls.name.touched) {
-          <p class="control-error">Name is required.</p>
+        <input type="text" id="name" formControlName="name"/>
+        @if (isFieldInvalid('name')) {
+          <p class="control-error">Please enter a name</p>
         }
       </div>
 
       <div class="form-group">
         <label for="phone">Contact Number</label>
-        <input type="text" id="phone" formControlName="contactNumber"
-        [ngClass]="{'ng-invalid': contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched}"/>
-        @if (contactForm.controls.contactNumber.invalid && contactForm.controls.contactNumber.touched) {
-          <p class="control-error">Please enter a contact number.</p>
+        <input type="text" id="phone" formControlName="contactNumber"/>
+        @if (isFieldInvalid('contactNumber')) {
+          <p class="control-error">
+            @if (contactForm.controls.contactNumber.errors?.['required']) {
+              Please enter a contact number
+            }
+            @if (contactForm.controls.contactNumber.errors?.['pattern']) {
+              Contact Number must be exactly 11 digits
+            }
+          </p>
         }
       </div>
 
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input id="email" type="email" formControlName="email"
-          [ngClass]="{'ng-invalid': contactForm.controls.email.invalid && contactForm.controls.email.touched}"/>
-        @if (contactForm.controls.email.invalid && contactForm.controls.email.touched) {
-          @if (contactForm.controls.email.errors?.['required']) {
-            <p class="control-error">Email is required.</p>
-          }
-          @if (contactForm.controls.email.errors?.['email']) {
-            <p class="control-error">Enter a valid email address.</p>
-          }
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"/>
+        @if (isFieldInvalid('email')) {
+          <p class="control-error">
+            @if (contactForm.controls.email.errors?.['required']) {
+              Please enter an Email address
+            }
+            @if (contactForm.controls.email.errors?.['email']) {
+              Please enter a valid Email address
+            }
+          </p>
         }
       </div>
 
       <div class="modal-actions">
         <button type="button" (click)="cancelModal()">Cancel</button>
-        <button type="submit">Save Changes</button>
+        <button type="submit" [disabled]="contactForm.invalid">Save Changes</button>
       </div>
     </form>
   </div>
