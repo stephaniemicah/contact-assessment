@@ -76,23 +76,25 @@
 .modal-actions button {
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
 }
 
 .modal-actions button:first-child {
-  background-color: #ccc;
-  color: #333;
+  background-color: white;
+  color: #b200ff;
+  border: #b200ff 2px solid;
 }
 
 .modal-actions button:last-child {
   background-color: #b200ff;
+  box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
   color: #fff;
 }
 
 .modal-actions button:first-child:hover {
-  background-color: #b3b3b3;
+  box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
 }
 
 .control-error {
