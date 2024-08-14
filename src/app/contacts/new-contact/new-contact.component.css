@@ -89,11 +89,14 @@
 
 .modal-actions button:last-child {
   background-color: #b200ff;
-  box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
   color: #fff;
 }
 
 .modal-actions button:first-child:hover {
+  box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
+}
+
+.modal-actions button:last-child:hover {
   box-shadow: 0 0 5px rgba(178, 0, 255, 0.5);
 }
 
