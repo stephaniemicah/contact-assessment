@@ -2,11 +2,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../contact.model';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../contacts.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-grid-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './grid-view.component.html',
   styleUrl: './grid-view.component.css'
 })

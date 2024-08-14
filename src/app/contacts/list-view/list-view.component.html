@@ -11,7 +11,7 @@
     <tbody>
       <tr *ngFor="let contact of contacts" class="contact-item">
         <td>
-          <a href="#">{{ contact.name }}</a>
+          <a [routerLink]="['/view-contact', contact.id]">{{ contact.name }}</a>
         </td>
         <td>{{ contact.phone }}</td>
         <td>{{ contact.email }}</td>

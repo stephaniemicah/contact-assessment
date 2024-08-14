@@ -4,7 +4,9 @@
       <img src="edit-icon.svg" alt="Edit" class="icon edit-icon" (click)="onEdit(contact)">
       <img src="delete-icon.svg" alt="Delete" class="icon delete-icon" (click)="deleteContact(contact.id)">
     </div>
-    <h4>{{ contact.name }}</h4>
+    <h4>
+      <a [routerLink]="['/view-contact', contact.id]">{{ contact.name }}</a>
+    </h4>
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
   </div>

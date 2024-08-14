@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../contacts.service';
 import { Contact } from '../contact.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.css']
 })
