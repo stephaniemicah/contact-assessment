@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../contact.model';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../contacts.service';
@@ -12,7 +12,13 @@ import { ContactsService } from '../contacts.service';
 })
 export class GridViewComponent {
   @Input() contacts: Contact[] = [];
+  @Output() contactDeleted = new EventEmitter<void>();
 
+  constructor(private contactsService: ContactsService) {}
+
+  deleteContact(contactId: number): void {
+    this.contactsService.deleteContact(contactId).subscribe(() => {
+      this.contactDeleted.emit(); 
+    });
   }
-
-
+}
