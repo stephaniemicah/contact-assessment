@@ -1,0 +1,21 @@
+<div class="view-contact-container">
+  <div class="back-button" (click)="goBack()">
+    <img src="back-arrow-icon.svg" alt="Back" class="back-icon" />
+    <span>Back</span>
+  </div>
+  <h1>Customer Information</h1>
+  <div class="contact-details-card">
+    <div class="contact-field">
+      <span class="label">First Name</span>
+      <span class="value">{{ contact?.name }}</span>
+    </div>
+    <div class="contact-field">
+      <span class="label">Email Address</span>
+      <span class="value">{{ contact?.email }}</span>
+    </div>
+    <div class="contact-field">
+      <span class="label">Contact Number</span>
+      <span class="value">{{ contact?.phone }}</span>
+    </div>
+  </div>
+</div>
