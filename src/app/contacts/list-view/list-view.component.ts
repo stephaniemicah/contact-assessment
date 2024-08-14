@@ -9,22 +9,7 @@ import { ContactsService } from '../contacts.service';
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.css']
 })
-export class ListViewComponent implements OnInit{
+export class ListViewComponent {
   @Input() contacts: any[] = [];
-  constructor(private contactsService: ContactsService) {}
-
-  ngOnInit(): void {
-    this.fetchContacts();
-  }
-
-  fetchContacts(): void {
-    this.contactsService.getContacts().subscribe(
-      (data) => {
-        this.contacts = data;
-      },
-      (error) => {
-        console.error('Error fetching contacts:', error);
-      }
-    );
-  }
+ 
 }

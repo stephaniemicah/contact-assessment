@@ -10,23 +10,9 @@ import { ContactsService } from '../contacts.service';
   templateUrl: './grid-view.component.html',
   styleUrl: './grid-view.component.css'
 })
-export class GridViewComponent implements OnInit{
+export class GridViewComponent {
   @Input() contacts: Contact[] = [];
-  constructor(private contactsService: ContactsService) {}
 
-  ngOnInit(): void {
-    this.fetchContacts();
   }
 
-  fetchContacts(): void {
-    this.contactsService.getContacts().subscribe(
-      (data) => {
-        this.contacts = data;
-      },
-      (error) => {
-        console.error('Error fetching contacts:', error);
-      }
-    );
-  }
 
-}
