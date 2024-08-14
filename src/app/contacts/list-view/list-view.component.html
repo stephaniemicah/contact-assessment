@@ -16,8 +16,8 @@
         <td>{{ contact.phone }}</td>
         <td>{{ contact.email }}</td>
         <td class="actions-column">
-          <img src="edit-icon.svg" title="Edit button" alt="Edit" class="action-icon">
-          <img src="delete-icon.svg" title="Delete button" alt="Delete" class="action-icon">
+          <img src="edit-icon.svg" title="Edit button" alt="Edit" class="action-icon" (click)="onEdit(contact)">
+          <img src="delete-icon.svg" title="Delete button" alt="Delete" class="action-icon" (click)="deleteContact(contact.id)">
         </td>
       </tr>
     </tbody>
