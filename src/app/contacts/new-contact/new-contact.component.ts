@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactsService } from '../contacts.service';
@@ -12,6 +12,7 @@ import { Contact } from '../contact.model';
   styleUrls: ['./new-contact.component.css']
 })
 export class NewContactComponent {
+  private destroyRef = inject(DestroyRef);
   @Output() cancel = new EventEmitter<void>();
   @Output() contactAdded = new EventEmitter<void>();
 
@@ -19,7 +20,7 @@ export class NewContactComponent {
     name: new FormControl('', [Validators.required]),
     contactNumber: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^\d{11}$/) // Regex to ensure exactly 11 digits
+      Validators.pattern(/^\d{11}$/)
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -42,9 +43,11 @@ export class NewContactComponent {
       email: this.contactForm.value.email ?? '',
     };
 
-    this.contactsService.addContact(newContact).subscribe(() => {
+    const subscription = this.contactsService.addContact(newContact).subscribe(() => {
       this.contactAdded.emit();
     });
+
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 
   cancelModal(): void {
