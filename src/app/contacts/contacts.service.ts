@@ -15,7 +15,7 @@ export class ContactsService {
     return this.httpClient.get<Contact[]>(this.apiUrl);
   }
 
-  getContactById(id: number): Observable<Contact> {
+  getContactById(id: string): Observable<Contact> { // Changed to string
     return this.httpClient.get<Contact>(`${this.apiUrl}/${id}`);
   }
 
@@ -27,7 +27,7 @@ export class ContactsService {
     return this.httpClient.put<Contact>(`${this.apiUrl}/${contact.id}`, contact);
   }
 
-  deleteContact(id: number): Observable<Contact> {
+  deleteContact(id: string): Observable<Contact> { // Changed to string
     return this.httpClient.delete<Contact>(`${this.apiUrl}/${id}`);
   }
 }
