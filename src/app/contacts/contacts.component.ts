@@ -20,6 +20,7 @@ export class ContactsComponent implements OnInit {
 
   currentView: 'grid' | 'list' = 'grid';
   contacts: Contact[] = [];
+  contactToEdit: Contact | null = null;
 
   constructor(private contactsService: ContactsService) {}
 
@@ -37,8 +38,14 @@ export class ContactsComponent implements OnInit {
     });
   }
 
+  openModalForEdit(contact: Contact): void {
+    this.contactToEdit = contact;
+    this.isModalOpen = true;
+  }
+
   closeModalAndRefresh(): void {
+    this.isModalOpen = false; 
     this.fetchContacts();
-    this.closeModal.emit();
+    this.contactToEdit = null;
   }
 }
