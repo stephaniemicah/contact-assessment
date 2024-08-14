@@ -6,11 +6,12 @@ import { NewContactComponent } from './new-contact/new-contact.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Contact } from './contact.model';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, GridViewComponent, ListViewComponent, NewContactComponent, HttpClientModule],
+  imports: [CommonModule, GridViewComponent, ListViewComponent, NewContactComponent, HttpClientModule, HeaderComponent],
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
@@ -58,6 +59,6 @@ export class ContactsComponent implements OnInit {
   closeModal(): void {
     this.isModalOpen = false;
     this.contactToEdit = null;
-    this.closeModalEvent.emit(); 
+    this.closeModalEvent.emit();
   }
 }

@@ -28,7 +28,7 @@ export class ContactsService {
     return this.httpClient.put<Contact>(`${this.apiUrl}/${contact.id}`, contact);
   }
 
-  deleteContact(id: string): Observable<Contact> { 
+  deleteContact(id: string): Observable<Contact> {
     return this.httpClient.delete<Contact>(`${this.apiUrl}/${id}`);
   }
 
