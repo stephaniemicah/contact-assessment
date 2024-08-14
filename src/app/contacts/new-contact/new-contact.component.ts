@@ -41,6 +41,11 @@ export class NewContactComponent {
     }
   }
 
+  cancelModal(): void {
+    this.contactForm.reset(); // Reset the form
+    this.cancel.emit(); // Emit the cancel event to close the modal
+  }
+
   onSubmit(): void {
     if (this.contactForm.invalid) {
       console.log('INVALID FORM');
@@ -57,7 +62,8 @@ export class NewContactComponent {
       };
 
       const subscription = this.contactsService.updateContact(updatedContact).subscribe(() => {
-        this.contactAdded.emit();
+        this.contactForm.reset(); // Reset the form after successful submission
+        this.contactAdded.emit(); // Notify parent component to refresh and close the modal
       });
 
       this.destroyRef.onDestroy(() => subscription.unsubscribe());
@@ -67,14 +73,15 @@ export class NewContactComponent {
         const maxId = contacts.length > 0 ? Math.max(...contacts.map(contact => parseInt(contact.id, 10))) : 0;
 
         const newContact: Contact = {
-          id: (maxId + 1).toString(), // Use string ID
+          id: (maxId + 1).toString(),
           name: this.contactForm.value.name ?? '',
           phone: this.contactForm.value.contactNumber ?? '',
           email: this.contactForm.value.email ?? '',
         };
 
         this.contactsService.addContact(newContact).subscribe(() => {
-          this.contactAdded.emit();
+          this.contactForm.reset(); // Reset the form after successful submission
+          this.contactAdded.emit(); // Notify parent component to refresh and close the modal
         });
       });
 
@@ -82,11 +89,6 @@ export class NewContactComponent {
     }
   }
 
-
-
-  cancelModal(): void {
-    this.cancel.emit();
-  }
 
   isFieldInvalid(fieldName: string): boolean {
     const control = this.contactForm.get(fieldName);
