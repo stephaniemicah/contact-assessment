@@ -13,6 +13,7 @@ import { Contact } from '../contact.model';
 })
 export class NewContactComponent {
   private destroyRef = inject(DestroyRef);
+  
   @Output() cancel = new EventEmitter<void>();
   @Output() contactAdded = new EventEmitter<void>();
 
@@ -36,19 +37,23 @@ export class NewContactComponent {
       return;
     }
 
-    const newContact: Contact = {
-      id: 0,
-      name: this.contactForm.value.name ?? '',
-      phone: this.contactForm.value.contactNumber ?? '',
-      email: this.contactForm.value.email ?? '',
-    };
+    this.contactsService.getContacts().subscribe((contacts) => {
+      const maxId = contacts.length > 0 ? Math.max(...contacts.map(contact => contact.id)) : 0;
+      const newContact: Contact = {
+        id: maxId + 1,
+        name: this.contactForm.value.name ?? '',
+        phone: this.contactForm.value.contactNumber ?? '',
+        email: this.contactForm.value.email ?? '',
+      };
 
-    const subscription = this.contactsService.addContact(newContact).subscribe(() => {
-      this.contactAdded.emit();
+      const subscription = this.contactsService.addContact(newContact).subscribe(() => {
+        this.contactAdded.emit();
+      });
+
+      this.destroyRef.onDestroy(() => subscription.unsubscribe());
     });
-
-    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
+
 
   cancelModal(): void {
     this.cancel.emit();
