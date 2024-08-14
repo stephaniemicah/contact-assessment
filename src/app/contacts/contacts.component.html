@@ -18,13 +18,13 @@
 </div>
 
 @if (currentView == 'grid') {
-  <app-grid-view [contacts]="contacts" (contactDeleted)="fetchContacts()"></app-grid-view>
+  <app-grid-view [contacts]="contacts" (contactDeleted)="fetchContacts()" (editContact)="openModalForEdit($event)"></app-grid-view>
 }
 @if (currentView == 'list') {
   <app-list-view [contacts]="contacts"></app-list-view>
 }
 @if (isModalOpen == true) {
-  <app-new-contact (cancel)="closeModalAndRefresh()"   (contactAdded)="closeModalAndRefresh()"></app-new-contact>
+  <app-new-contact [contactToEdit]="contactToEdit" (cancel)="closeModalAndRefresh()"   (contactAdded)="closeModalAndRefresh()"></app-new-contact>
 }
 <!-- <app-grid-view *ngIf="currentView === 'grid'" [contacts]="contacts" (contactDeleted)="fetchContacts()"></app-grid-view>
 <app-list-view *ngIf="currentView === 'list'" [contacts]="contacts"></app-list-view> -->
