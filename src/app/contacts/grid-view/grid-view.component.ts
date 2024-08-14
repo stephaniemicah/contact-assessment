@@ -18,12 +18,12 @@ export class GridViewComponent {
   constructor(private contactsService: ContactsService) {}
 
   onEdit(contact: Contact): void {
-    this.editContact.emit(contact); 
+    this.editContact.emit(contact);
   }
 
-  deleteContact(contactId: number): void {
+  deleteContact(contactId: string): void {
     this.contactsService.deleteContact(contactId).subscribe(() => {
-      this.contactDeleted.emit();
+      this.contactDeleted.emit(); // Notify the parent component to refresh the contact list
     });
   }
 }
