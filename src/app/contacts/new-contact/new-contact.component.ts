@@ -57,32 +57,30 @@ export class NewContactComponent {
       };
 
       const subscription = this.contactsService.updateContact(updatedContact).subscribe(() => {
-        this.contactAdded.emit(); // Notify parent component to refresh and close the modal
+        this.contactAdded.emit();
       });
 
       this.destroyRef.onDestroy(() => subscription.unsubscribe());
     } else {
       // Add new contact
       const subscription = this.contactsService.getContacts().subscribe((contacts) => {
-        const maxId = contacts.length > 0 ? Math.max(...contacts.map(contact => contact.id)) : 0;
+        const maxId = contacts.length > 0 ? Math.max(...contacts.map(contact => parseInt(contact.id, 10))) : 0;
 
         const newContact: Contact = {
-          id: maxId + 1, // Increment the ID
+          id: (maxId + 1).toString(), // Use string ID
           name: this.contactForm.value.name ?? '',
           phone: this.contactForm.value.contactNumber ?? '',
           email: this.contactForm.value.email ?? '',
         };
 
         this.contactsService.addContact(newContact).subscribe(() => {
-          this.contactAdded.emit(); // Notify parent component to refresh and close the modal
+          this.contactAdded.emit();
         });
       });
 
       this.destroyRef.onDestroy(() => subscription.unsubscribe());
     }
   }
-
-
 
 
 
