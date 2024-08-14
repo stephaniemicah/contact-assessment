@@ -21,7 +21,7 @@
   <app-grid-view [contacts]="contacts" (contactDeleted)="fetchContacts()" (editContact)="openModalForEdit($event)"></app-grid-view>
 }
 @if (currentView == 'list') {
-  <app-list-view [contacts]="contacts"></app-list-view>
+  <app-list-view [contacts]="contacts" (contactDeleted)="fetchContacts()" (editContact)="openModalForEdit($event)"></app-list-view>
 }
 @if (isModalOpen == true) {
   <app-new-contact [contactToEdit]="contactToEdit" (cancel)="closeModalAndRefresh()"   (contactAdded)="closeModalAndRefresh()"></app-new-contact>
