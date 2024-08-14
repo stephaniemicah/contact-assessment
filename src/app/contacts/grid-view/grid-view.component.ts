@@ -13,12 +13,17 @@ import { ContactsService } from '../contacts.service';
 export class GridViewComponent {
   @Input() contacts: Contact[] = [];
   @Output() contactDeleted = new EventEmitter<void>();
+  @Output() editContact = new EventEmitter<Contact>();
 
   constructor(private contactsService: ContactsService) {}
 
+  onEdit(contact: Contact): void {
+    this.editContact.emit(contact); 
+  }
+
   deleteContact(contactId: number): void {
     this.contactsService.deleteContact(contactId).subscribe(() => {
-      this.contactDeleted.emit(); 
+      this.contactDeleted.emit();
     });
   }
 }
