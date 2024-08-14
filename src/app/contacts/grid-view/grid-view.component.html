@@ -1,7 +1,7 @@
 <div class="grid-container">
   <div class="grid-item" *ngFor="let contact of contacts">
     <div class="icon-container">
-      <img src="edit-icon.svg" alt="Edit" class="icon edit-icon">
+      <img src="edit-icon.svg" alt="Edit" class="icon edit-icon" (click)="onEdit(contact)">
       <img src="delete-icon.svg" alt="Delete" class="icon delete-icon" (click)="deleteContact(contact.id)">
     </div>
     <h4>{{ contact.name }}</h4>
