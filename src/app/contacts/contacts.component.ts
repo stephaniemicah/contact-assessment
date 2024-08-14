@@ -15,8 +15,8 @@ import { Contact } from './contact.model';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  @Input() isModalOpen = false; // Add @Input() to allow binding
-  @Output() closeModal = new EventEmitter<void>(); // Add @Output() for the close event
+  @Input() isModalOpen = false;
+  @Output() closeModalEvent = new EventEmitter<void>();
 
   currentView: 'grid' | 'list' = 'grid';
   contacts: Contact[] = [];
@@ -38,14 +38,26 @@ export class ContactsComponent implements OnInit {
     });
   }
 
+  openModal(): void {
+    this.contactToEdit = null; // Ensure no contact is being edited
+    this.isModalOpen = true;   // Open the modal for adding a new contact
+  }
+
   openModalForEdit(contact: Contact): void {
     this.contactToEdit = contact;
     this.isModalOpen = true;
   }
 
   closeModalAndRefresh(): void {
-    this.isModalOpen = false; 
+    this.isModalOpen = false;
     this.fetchContacts();
     this.contactToEdit = null;
+  }
+
+  // Consolidated closeModal method
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.contactToEdit = null;
+    this.closeModalEvent.emit(); 
   }
 }
