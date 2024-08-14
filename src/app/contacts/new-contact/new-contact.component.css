@@ -95,10 +95,6 @@
   background-color: #b3b3b3;
 }
 
-.modal-actions button:last-child:hover {
-  background-color: #8a00cc;
-}
-
 .control-error {
   color: red;
   font-size: 0.875em;
